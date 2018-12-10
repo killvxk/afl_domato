@@ -6,3 +6,4 @@ afl-gcc
 afl-gotcpu
 afl-showmap
 afl-tmin
+*.pyc
