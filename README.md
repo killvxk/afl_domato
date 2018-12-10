@@ -6,5 +6,6 @@ Afl's python extension is copied from https://github.com/choller/afl/blob/master
 # 1. build 
 CFLAGS="-DUSE_PYTHON -I/usr/include/python2.7" LDFLAGS="-lpython2.7" make
 
-# 2. 
+# 2. run
+AFL_PYTHON_MODULE="pymodules.domato_fuzz" PYTHONPATH=. ./afl-fuzz
 
