@@ -1,0 +1,12 @@
+CFLAGS="-DUSE_PYTHON -I/usr/include/python2.7" LDFLAGS="-lpython2.7" make clean all
+
+LLVM_CONFIG=llvm-config-3.8 CXXFLAGS="-DLLVM38" make
+
+
+export CC=/home/codesafe/afl-domato/afl-clang-fast
+export CXX=/home/codesafe/afl-domato/afl-clang-fast++
+export AFL_HARDEN=1
+export AFL_INST_RATIO=1
+./Tools/Scripts/build-jsc --jsc-only --j24 --ftl-jit --build-dir=domato/
+
+AFL_PYTHON_ONLY=1 AFL_PYTHON_MODULE="pymodules.domato_fuzz" PYTHONPATH=. ./afl-fuzz -M f4 -m 2G -i in -o out ~/webkit_fuzz/webkit/domato/Release/bin/jsc @@

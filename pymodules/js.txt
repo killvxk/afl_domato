@@ -1,0 +1,134 @@
+<root root=true> = <lines count=200>
+
+!begin lines
+
+<regexpTest>
+
+!end lines
+
+<regexpTest>=<define_str><nl><define_pattern><nl><operation><nl><operation><nl><operation>
+
+<define_str>=var str="<htmlsafestring min=32 max=126>";
+
+<define_pattern>=var patt=<regexp>;
+
+<operation>=var res=patt.constructor;
+<operation>=var res=patt.global;
+<operation>=var res=patt.ignoreCase;
+<operation>=var res=patt.lastIndex;
+<operation>=var res=patt.multiline;
+<operation>=var res=patt.source;
+<operation>=RegExp.input=str;
+<operation>=var res=RegExp.rightContext;
+<operation>=var res=RegExp.leftContext;
+<operation>=var res=RegExp.$0;
+<operation>=var res=RegExp.$1;
+<operation>=var res=RegExp.$2;
+<operation>=var res=RegExp.$3;
+<operation>=var res=RegExp.$4;
+<operation>=var res=RegExp.$5;
+<operation>=var res=RegExp.$6;
+<operation>=var res=RegExp.$7;
+<operation>=var res=RegExp.$8;
+<operation>=var res=RegExp.$9;
+<operation>=var res=RegExp.$10;
+<operation>=var res=RegExp.lastMatch;
+<operation>=var res=RegExp.lastParen;
+<operation>=RegExp.prototype={};
+<operation>=var res=RegExp.prototype.flags;
+<operation>=var res=patt.exec(str);
+<operation>=var res=patt.test(str);
+<operation>=var res=patt.toString();
+<operation>=var res=str.search(patt);
+<operation>=var res=str.replace(patt,"<htmlsafestring min=32 max=126>");
+<operation>=var res=str.match(patt);
+<operation>=var res=str.split(patt);
+
+
+<regexp>=/<pattern>/<modifier>
+<regexp>=new RegExp("<pattern>")
+
+
+<modifier>=i
+<modifier>=g
+<modifier>=m
+<modifier>=<char>
+
+<pattern>=<regstr>
+<pattern>=<regstr><regstr>
+<pattern>=<regstr><regstr><regstr><regstr><regstr>
+<pattern>=<regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr>
+<pattern>=<regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr><regstr>
+
+
+<regstr>=<fuzzint>
+<regstr>=<char>
+<regstr>=(
+<regstr>=)
+<regstr>=[
+<regstr>=]
+<regstr>={
+<regstr>=}
+<regstr>=:
+<regstr>=\
+<regstr>=/
+<regstr>=|
+<regstr>=.
+<regstr>=^
+<regstr>=$
+<regstr>=#
+<regstr>=-
+<regstr>=<space>
+<regstr>=+
+<regstr>=*
+<regstr>=?
+<regstr>={<fuzzint>}
+<regstr>={<fuzzint>,<fuzzint>}
+<regstr>={<fuzzint>,}
+<regstr>==
+<regstr>=?:
+<regstr>=?=
+<regstr>=?!
+<regstr>=?<=
+<regstr>=?<!
+<regstr>=\w
+<regstr>=\W
+<regstr>=\d
+<regstr>=\D
+<regstr>=\s
+<regstr>=\S
+<regstr>=\b
+<regstr>=\B
+<regstr>=\0
+<regstr>=\n
+<regstr>=\f
+<regstr>=\r
+<regstr>=\t
+<regstr>=\v
+<regstr>=\<fuzzint>
+<regstr>=\xdd
+<regstr>=\u<fuzzint>
+
+<fuzzint> = -1
+<fuzzint> = 0
+<fuzzint> = 1
+<fuzzint> = 2
+<fuzzint> = 3
+<fuzzint> = 4
+<fuzzint> = 5
+<fuzzint> = 10
+<fuzzint> = 100
+<fuzzint> = 1000
+<fuzzint> = 1000000
+<fuzzint> = <largeint>
+
+<largeint> = 536870911
+<largeint> = 536870912
+<largeint> = 1073741823
+<largeint> = 1073741824
+<largeint> = 2147483647
+<largeint> = 2147483648
+<largeint> = 4294967295
+<largeint> = 4294967296
+
+

@@ -15,45 +15,30 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 '''
 
 import random
+from grammar import Grammar
+
+jsgrammar = Grammar()
 
 def init(seed):
     '''
     Called once when AFLFuzz starts up. Used to seed our RNG.
-    
-    @type seed: int
-    @param seed: A 32-bit random value
     '''
-    # Seed our RNG
-    random.seed(seed)
+    # CheckGrammar(jsgrammar)
+    err = jsgrammar.parse_from_file('/home/codesafe/afl-domato/pymodules/js.txt')
     return 0
 
 def fuzz(buf, add_buf):
     '''
     Called per fuzzing iteration.
-    
-    @type buf: bytearray
-    @param buf: The buffer that should be mutated.
-    
-    @type add_buf: bytearray
-    @param add_buf: A second buffer that can be used as mutation source.
-    
-    @rtype: bytearray
-    @return: A new bytearray containing the mutated data
     '''
-    # Make a copy of our input buffer for returning
-    ret = bytearray(buf)
-
-    # Take a random fragment length between 2 and 32 (or less if add_buf is shorter)
-    fragment_len = random.randint(1, min(len(add_buf), 32))
-    
-    # Determine a random source index where to take the data chunk from
-    rand_src_idx = random.randint(0, len(add_buf) - fragment_len)
-    
-    # Determine a random destination index where to put the data chunk
-    rand_dst_idx = random.randint(0, len(buf))
-
-    # Make the chunk replacement
-    ret[rand_dst_idx:rand_dst_idx + fragment_len] = add_buf[rand_src_idx:rand_src_idx + fragment_len]
+    result_string = jsgrammar._generate_code(1)
+    #result_string = "function foo() { o = Error(); for (var s in o) { print(o[s]); o = Error(); } } for (var i = 0; i < 100; ++i) { foo(); }"
+    #print result_string
+    ret = bytearray()
+    ret.extend(result_string)
 
     # Return data
     return ret
+
+if __name__ == '__main__':
+    fuzz()
