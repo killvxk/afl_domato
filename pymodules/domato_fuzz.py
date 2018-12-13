@@ -24,7 +24,7 @@ def init(seed):
     Called once when AFLFuzz starts up. Used to seed our RNG.
     '''
     # CheckGrammar(jsgrammar)
-    err = jsgrammar.parse_from_file('/home/codesafe/afl-domato/pymodules/js.txt')
+    err = jsgrammar.parse_from_file('js.txt')
     return 0
 
 def fuzz(buf, add_buf):
